@@ -6,7 +6,7 @@ import { paginate } from "../utils/paginate";
 import ListGroup from "./common/listGroup";
 import { getGenres } from "../services/genreService";
 import MoviesTable from "./moviesTable";
-import _, { filter } from "lodash";
+import _ from "lodash";
 import { Link } from "react-router-dom";
 import SearchBox from "./common/searchBox";
 import { toast } from "react-toastify";
