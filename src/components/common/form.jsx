@@ -20,6 +20,7 @@ class Form extends Component {
     for (let item of result.error.details) {
       errors[item.path[0]] = item.message;
     }
+    
     return errors;
   };
 
@@ -35,7 +36,7 @@ class Form extends Component {
     const errorMessage = this.validateProperty(e.currentTarget);
     if (errorMessage) errors[e.currentTarget.name] = errorMessage;
     else delete errors[e.currentTarget.name];
-
+    
     const data = { ...this.state.data };
     data[e.currentTarget.name] = e.currentTarget.value;
     this.setState({ data, errors });

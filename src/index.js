@@ -7,7 +7,7 @@ import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
 
-console.log(process.env);
+//console.log(process.env);
 
 ReactDOM.render(
   <React.StrictMode>
