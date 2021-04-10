@@ -39,6 +39,13 @@ class Movies extends Component {
     movies[index].liked = !movies[index].liked;
     this.setState({ movies });
   };
+  handleRate = (movie) => {
+    const movies = [...this.state.movies];
+    const index = movies.indexOf(movie);
+    movies[index] = { ...movies[index] };
+    movies[index].rated = !movies[index].rated;
+    this.setState({ movies });
+  };
 
   handleDelete = async (movie) => {
     const originalMovies = this.state.movies;
@@ -77,7 +84,20 @@ class Movies extends Component {
     const { user } = this.props;
 
     if (this.state.movies.length === 0) {
-      return <p>There are no movies in the database.</p>;
+      return (
+      <div>
+        <p>There are no movies in the database.</p>
+        {user && (
+          <Link
+            to="/movies/new"
+            className="btn btn-primary"
+            style={{ marginBottom: 20 }}
+          >
+            New Movie
+          </Link>
+        )}
+        </div>)
+      
     }
 
     let filtered = movies;
@@ -124,6 +144,7 @@ class Movies extends Component {
             pageMovies={pageMovies}
             sortColumn={sortColumn}
             onLike={this.handleLike}
+            onRate={this.handleRate}
             onDelete={this.handleDelete}
             onSort={this.handleSort}
           />

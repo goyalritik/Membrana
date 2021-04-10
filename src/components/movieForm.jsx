@@ -6,7 +6,7 @@ import { saveMovie, getMovie } from "./../services/movieService";
 
 class MovieForm extends Form {
   state = {
-    data: { title: "", genreId: "", numberInStock: "", dailyRentalRate: "" },
+    data: { title: "", genreId: "", numberInStock: "", rating: "", link:"" },
     genres: [],
     errors: {},
   };
@@ -20,11 +20,12 @@ class MovieForm extends Form {
       .max(100)
       .required()
       .label("NumberInStock"),
-    dailyRentalRate: Joi.number()
+    rating: Joi.number()
       .min(0)
       .max(5)
       .required()
-      .label("DailyRentalRate"),
+      .label("Rating"),
+    link: Joi.string().required().label("Link"),
   };
 
   async componentDidMount() {
@@ -49,7 +50,8 @@ class MovieForm extends Form {
       title: movie.title,
       genreId: movie.genre._id,
       numberInStock: movie.numberInStock,
-      dailyRentalRate: movie.dailyRentalRate,
+      rating: movie.rating,
+      link: movie.link,
     };
   };
 
@@ -66,7 +68,8 @@ class MovieForm extends Form {
           {this.renderInput("title", "Title")}
           {this.renderSelect("genreId", "Genre", this.state.genres)}
           {this.renderInput("numberInStock", "NumberInStock", "number")}
-          {this.renderInput("dailyRentalRate", "DailyRentalRate", "number")}
+          {this.renderInput("rating", "Rating", "number")}
+          {this.renderInput("link", "Link")}
           {this.renderButton("Save")}
         </form>
       </div>

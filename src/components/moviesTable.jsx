@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Likes from "./common/like";
 import { Link } from "react-router-dom";
 import { currentUser } from "./../services/authService";
+import Rate from './common/rate';
 
 class MoviesTable extends Component {
   state = {};
@@ -25,7 +26,7 @@ class MoviesTable extends Component {
   };
 
   render() {
-    const { pageMovies, onDelete, onLike } = this.props;
+    const { pageMovies, onDelete, onLike, onRate } = this.props;
     const user = currentUser();
 
     return (
@@ -52,9 +53,15 @@ class MoviesTable extends Component {
 
             <th
               className="clickable"
-              onClick={() => this.raisedSort("dailyRentalRate")}
+              onClick={() => this.raisedSort("rating")}
             >
-              DailyRentalRate {this.renderSortIcon("dailyRentalRate")}
+              Rating {this.renderSortIcon("rating")}
+            </th>
+            <th
+              className="clickable"
+              onClick={() => this.raisedSort("link")}
+            >
+              Link {this.renderSortIcon("link")}
             </th>
 
             <th></th>
@@ -69,7 +76,15 @@ class MoviesTable extends Component {
               </td>
               <td>{movie.genre.name}</td>
               <td>{movie.numberInStock}</td>
-              <td>{movie.dailyRentalRate}</td>
+              <td>{movie.rating}</td>
+              <td><a href={movie.link}>Click Here</a></td>
+              <td>
+                <Rate onClick={() => onRate(movie)} rated={movie.rated} />
+                <Rate onClick={() => onRate(movie)} rated={movie.rated} />
+                <Rate onClick={() => onRate(movie)} rated={movie.rated} />
+                <Rate onClick={() => onRate(movie)} rated={movie.rated} />
+                <Rate onClick={() => onRate(movie)} rated={movie.rated} />
+              </td>
               <td>
                 <Likes onClick={() => onLike(movie)} liked={movie.liked} />
               </td>
