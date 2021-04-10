@@ -8,7 +8,7 @@ class NavBar extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Link className="navbar-brand" to="/">
-          Vidly
+          Membrana
         </Link>
         <button
           className="navbar-toggler"
@@ -28,9 +28,10 @@ class NavBar extends Component {
                 Movies <span className="sr-only">(current)</span>
               </NavLink>
             </li>
+            
             <li className="nav-item">
-              <NavLink className="nav-link" to="/customers">
-                Customers
+              <NavLink className="nav-link" to="/reviews">
+                Reviews
               </NavLink>
             </li>
             <li className="nav-item">

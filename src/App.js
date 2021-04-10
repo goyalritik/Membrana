@@ -40,7 +40,7 @@ class App extends Component {
               path="/movies"
               render={(props) => <Movies {...props} user={this.state.user} />}
             />
-            <Route path="/customers" component={Customers} />
+            <Route path="/reviews" render={(props) => <Customers {...props} user={this.state.user} />} />
             <Route path="/rentals" component={Rentals} />
             <Route path="/not-found" component={NotFound} />
             <Redirect from="/" exact to="/movies" />
