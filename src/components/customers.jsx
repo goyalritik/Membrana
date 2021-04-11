@@ -5,10 +5,13 @@ import  Joi  from 'joi-browser';
 import { review } from "../services/userService";
 import { currentUser } from './../services/authService';
 import { getReviews } from './../services/userService';
+import Rate from './common/rate';
+
+import RateShow from './rateShow';
 
 class Customers extends Form {
   state = {
-    data: {movie:[],review:""},
+    data: {rating:"",movie:[],review:""},
     user:"",
     movies:[],
     reviews:[],
@@ -16,6 +19,7 @@ class Customers extends Form {
     
   };
   schema = {
+    rating: Joi.number().required().label("Rating"),
     movie: Joi.string().required().label("Movie"),
     review: Joi.string().required().label("Review"),
   };
@@ -55,6 +59,10 @@ class Customers extends Form {
         <React.Fragment>
     <form onSubmit={this.handleSubmit}>
     <div className="form-group">
+      <label htmlFor="rating">Rating</label><br/>
+    <Rate id="rating" onChange={this.handleChange} /></div>
+    <div className="form-group">
+      
         <label htmlFor="movie">Movie</label>
         <select name="movie" id="movie" onChange={this.handleChange} className="form-control">
           <option value=""></option>
@@ -84,7 +92,8 @@ class Customers extends Form {
       <div>
         <ul className="list-group">
         {this.state.reviews.map((option)=>(
-          <li className="list-group-item" key={option._id}><b>{option.movieName}</b><br/>~{option.userName}<br/>{option.review}</li>
+          
+          <li className="list-group-item" key={option._id}><b>{option.movieName}</b><br/>{<RateShow number={option.rating}/>}<br/>~{option.userName}<br/>{option.review}</li>
         ))}
         </ul></div>
     

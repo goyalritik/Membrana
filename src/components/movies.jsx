@@ -16,7 +16,7 @@ class Movies extends Component {
     movies: [],
     genres: [],
     currentPage: 1,
-    pageSize: 3,
+    pageSize: 6,
     sortColumn: { path: "title", order: "asc" },
     searchQuery: "",
     selectedGenre: null,
@@ -39,13 +39,7 @@ class Movies extends Component {
     movies[index].liked = !movies[index].liked;
     this.setState({ movies });
   };
-  handleRate = (movie) => {
-    const movies = [...this.state.movies];
-    const index = movies.indexOf(movie);
-    movies[index] = { ...movies[index] };
-    movies[index].rated = !movies[index].rated;
-    this.setState({ movies });
-  };
+  
 
   handleDelete = async (movie) => {
     const originalMovies = this.state.movies;
@@ -144,7 +138,7 @@ class Movies extends Component {
             pageMovies={pageMovies}
             sortColumn={sortColumn}
             onLike={this.handleLike}
-            onRate={this.handleRate}
+            
             onDelete={this.handleDelete}
             onSort={this.handleSort}
           />

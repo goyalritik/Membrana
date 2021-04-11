@@ -16,6 +16,7 @@ export function review(data,user) {
   var [id,name]= data.movie.split("~");
  
   return http.post(apiEndpoint1, {
+    rating: data.rating,
     movieId: id,
     movieName:name,
     review: data.review,
