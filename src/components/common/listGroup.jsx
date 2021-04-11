@@ -18,8 +18,8 @@ class ListGroup extends Component {
             key={item[valueProperty]}
             className={
               item === selectedItem
-                ? "list-group-item active"
-                : "list-group-item"
+                ? "list-group-item active genre-card"
+                : "list-group-item genre-card"
             }
           >
             {item[textProperty]}

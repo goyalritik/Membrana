@@ -12,6 +12,7 @@ class SearchBox extends Component {
         onChange={(e) => onChange(e.currentTarget.value)}
         value={value}
         className="form-control my-3"
+        id="input"
       />
     );
   }

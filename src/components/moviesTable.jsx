@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Likes from "./common/like";
 import { Link } from "react-router-dom";
 import { currentUser } from "./../services/authService";
-import Rate from './common/rate';
+import Rate from "./common/rate";
 
 class MoviesTable extends Component {
   state = {};
@@ -51,16 +51,10 @@ class MoviesTable extends Component {
               NumberInStock {this.renderSortIcon("numberInStock")}
             </th>
 
-            <th
-              className="clickable"
-              onClick={() => this.raisedSort("rating")}
-            >
+            <th className="clickable" onClick={() => this.raisedSort("rating")}>
               Rating {this.renderSortIcon("rating")}
             </th>
-            <th
-              className="clickable"
-              onClick={() => this.raisedSort("link")}
-            >
+            <th className="clickable" onClick={() => this.raisedSort("link")}>
               Link {this.renderSortIcon("link")}
             </th>
 
@@ -77,7 +71,9 @@ class MoviesTable extends Component {
               <td>{movie.genre.name}</td>
               <td>{movie.numberInStock}</td>
               <td>{movie.rating}</td>
-              <td><a href={movie.link}>Click Here</a></td>
+              <td>
+                <a href={movie.link}>Click Here</a>
+              </td>
               <td>
                 <Rate onClick={() => onRate(movie)} rated={movie.rated} />
                 <Rate onClick={() => onRate(movie)} rated={movie.rated} />

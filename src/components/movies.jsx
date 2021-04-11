@@ -85,19 +85,19 @@ class Movies extends Component {
 
     if (this.state.movies.length === 0) {
       return (
-      <div>
-        <p>There are no movies in the database.</p>
-        {user && (
-          <Link
-            to="/movies/new"
-            className="btn btn-primary"
-            style={{ marginBottom: 20 }}
-          >
-            New Movie
-          </Link>
-        )}
-        </div>)
-      
+        <div>
+          <p>There are no movies in the database.</p>
+          {user && (
+            <Link
+              to="/movies/new"
+              className="btn btn-primary"
+              style={{ marginBottom: 20 }}
+            >
+              New Movie
+            </Link>
+          )}
+        </div>
+      );
     }
 
     let filtered = movies;
@@ -118,42 +118,44 @@ class Movies extends Component {
     );
 
     return (
-      <div className="row">
-        <div className="col-3">
-          <ListGroup
-            items={this.state.genres}
-            selectedItem={this.state.selectedGenre}
-            onItemsSelect={this.handleGenreSelect}
-          />
-        </div>
-        <div className="col">
-          {user && (
-            <Link
-              to="/movies/new"
-              className="btn btn-primary"
-              style={{ marginBottom: 20 }}
-            >
-              New Movie
-            </Link>
-          )}
-          <p>Showing {filtered.length} movies in the database.</p>
+      <div id="movies-main-wrapper">
+        <div className="row">
+          <div className="col-3">
+            <ListGroup
+              items={this.state.genres}
+              selectedItem={this.state.selectedGenre}
+              onItemsSelect={this.handleGenreSelect}
+            />
+          </div>
+          <div className="col">
+            {user && (
+              <Link
+                to="/movies/new"
+                className="btn btn-primary"
+                style={{ marginBottom: 20 }}
+              >
+                New Movie
+              </Link>
+            )}
+            <p>Showing {filtered.length} movies in the database.</p>
 
-          <SearchBox onChange={this.handleSearch} value={searchQuery} />
+            <SearchBox onChange={this.handleSearch} value={searchQuery} />
 
-          <MoviesTable
-            pageMovies={pageMovies}
-            sortColumn={sortColumn}
-            onLike={this.handleLike}
-            onRate={this.handleRate}
-            onDelete={this.handleDelete}
-            onSort={this.handleSort}
-          />
-          <Pagination
-            itemsCount={filtered.length}
-            pageSize={this.state.pageSize}
-            currentPage={this.state.currentPage}
-            onPageChange={this.handlePageChange}
-          />
+            <MoviesTable
+              pageMovies={pageMovies}
+              sortColumn={sortColumn}
+              onLike={this.handleLike}
+              onRate={this.handleRate}
+              onDelete={this.handleDelete}
+              onSort={this.handleSort}
+            />
+            <Pagination
+              itemsCount={filtered.length}
+              pageSize={this.state.pageSize}
+              currentPage={this.state.currentPage}
+              onPageChange={this.handlePageChange}
+            />
+          </div>
         </div>
       </div>
     );

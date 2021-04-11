@@ -6,8 +6,8 @@ class NavBar extends Component {
   render() {
     const { user } = this.props;
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link className="navbar-brand" to="/">
+      <nav className="navbar navbar-expand-lg navbar-mine">
+        <Link className="navbar-brand logo-icon" to="/">
           Membrana
         </Link>
         <button
@@ -28,17 +28,21 @@ class NavBar extends Component {
                 Movies <span className="sr-only">(current)</span>
               </NavLink>
             </li>
-            
+
             <li className="nav-item">
               <NavLink className="nav-link" to="/reviews">
                 Reviews
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/rentals">
-                Rentals
+              <NavLink className="nav-link" to="/trendingMovie">
+                Trending
               </NavLink>
             </li>
+          </ul>
+        </div>
+        <div id="user">
+          <ul className="navbar-nav">
             {user && (
               <React.Fragment>
                 <li className="nav-item">

@@ -3,14 +3,15 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 import Movies from "./components/movies";
-import Customers from "./components/customers";
-import Rentals from "./components/rentals";
+import Reviews from "./components/review";
+import TrendingMovie from "./components/Trending";
 import NotFound from "./components/notFound";
 import NavBar from "./components/navbar";
 import MovieForm from "./components/movieForm";
 import LoginForm from "./components/loginForm";
 import Logout from "./components/Logout";
 import RegisterForm from "./components/registerForm";
+import LandingPage from "./components/landingPage";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import { currentUser } from "./services/authService";
@@ -29,7 +30,8 @@ class App extends Component {
       <React.Fragment>
         <ToastContainer />
         <NavBar user={this.state.user} />
-        <main className="container">
+        <img src="/NBG2.jpg" alt="BackgroundImage" itemType="jpg" id="bg" />
+        <main className="">
           <Switch>
             <Route path="/logout" component={Logout} />
             <Route path="/register" component={RegisterForm} />
@@ -40,10 +42,13 @@ class App extends Component {
               path="/movies"
               render={(props) => <Movies {...props} user={this.state.user} />}
             />
-            <Route path="/reviews" render={(props) => <Customers {...props} user={this.state.user} />} />
-            <Route path="/rentals" component={Rentals} />
+            <Route
+              path="/reviews"
+              render={(props) => <Reviews {...props} user={this.state.user} />}
+            />
+            <Route path="/trendingMovie" component={TrendingMovie} />
             <Route path="/not-found" component={NotFound} />
-            <Redirect from="/" exact to="/movies" />
+            <Route path="/" exact component={LandingPage} />
             <Redirect to="/not-found" />
           </Switch>
         </main>
