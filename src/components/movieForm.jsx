@@ -6,7 +6,7 @@ import { saveMovie, getMovie } from "./../services/movieService";
 
 class MovieForm extends Form {
   state = {
-    data: { title: "", genreId: "", numberInStock: "", rating: "", link:"" },
+    data: { title: "", genreId: "",/* numberInStock: "", rating: "",*/ link:"" },
     genres: [],
     errors: {},
   };
@@ -15,16 +15,16 @@ class MovieForm extends Form {
     _id: Joi.string(),
     title: Joi.string().required().label("Title"),
     genreId: Joi.string().required().label("Genre"),
-    numberInStock: Joi.number()
-      .min(0)
-      .max(100)
-      .required()
-      .label("NumberInStock"),
-    rating: Joi.number()
-      .min(0)
-      .max(5)
-      .required()
-      .label("Rating"),
+    // numberInStock: Joi.number()
+    //   .min(0)
+    //   .max(100)
+    //   .required()
+    //   .label("NumberInStock"),
+    // rating: Joi.number()
+    //   .min(0)
+    //   .max(5)
+    //   .required()
+    //   .label("Rating"),
     link: Joi.string().required().label("Link"),
   };
 
@@ -49,8 +49,8 @@ class MovieForm extends Form {
       _id: movie._id,
       title: movie.title,
       genreId: movie.genre._id,
-      numberInStock: movie.numberInStock,
-      rating: movie.rating,
+      // numberInStock: movie.numberInStock,
+      // rating: movie.rating,
       link: movie.link,
     };
   };
@@ -67,8 +67,8 @@ class MovieForm extends Form {
         <form onSubmit={this.handleSubmit}>
           {this.renderInput("title", "Title")}
           {this.renderSelect("genreId", "Genre", this.state.genres)}
-          {this.renderInput("numberInStock", "NumberInStock", "number")}
-          {this.renderInput("rating", "Rating", "number")}
+          {/* {this.renderInput("numberInStock", "NumberInStock", "number")}
+          {this.renderInput("rating", "Rating", "number")} */}
           {this.renderInput("link", "Link")}
           {this.renderButton("Save")}
         </form>
