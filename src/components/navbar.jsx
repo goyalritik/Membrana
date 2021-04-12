@@ -34,11 +34,11 @@ class NavBar extends Component {
                 Reviews
               </NavLink>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <NavLink className="nav-link" to="/trendingMovie">
                 Trending
               </NavLink>
-            </li>
+            </li> */}
           </ul>
         </div>
         <div id="user">

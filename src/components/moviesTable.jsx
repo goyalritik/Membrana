@@ -110,7 +110,12 @@ class MoviesTable extends Component {
               <td>{this.numberOfReviews(movie._id)}</td>
               <td>{this.totalRating(movie._id)}</td>
               <td>
-                <a id="watch-link" href={movie.link}>
+                <a
+                  id="watch-link"
+                  href={movie.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Watch it now
                 </a>
               </td>
