@@ -17,12 +17,12 @@ class Pagination extends Component {
               key={page}
               className={
                 page === this.props.currentPage
-                  ? "page-item active"
-                  : "page-item"
+                  ? "page-item active page-button"
+                  : "page-item page-button"
               }
             >
               <button
-                className="page-link"
+                className="page-link page-button"
                 onClick={() => this.props.onPageChange(page)}
               >
                 {page}

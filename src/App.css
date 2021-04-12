@@ -148,8 +148,9 @@ input[type="radio"] {
 }
 
 .genre-card {
-  background-color: #3b3b3b !important;
+  background-color: #3b3b3bd3 !important;
   cursor: pointer;
+  margin: 0.5px;
 }
 
 .genre-card + .active {
@@ -184,6 +185,11 @@ input[type="radio"] {
   /* background: rgba(75, 75, 75, 0.514); */
 }
 
+option {
+  background: #282c34 !important;
+  color: aliceblue !important;
+}
+
 #movie-form-wrapper {
   width: 65vw;
   margin: auto;
@@ -193,6 +199,18 @@ input[type="radio"] {
 
 #register-form-wrapper,
 #login-form-wrapper {
+  color: aliceblue;
+  position: relative;
+  top: 5vh;
+  width: 50vw;
+  height: auto;
+  margin: auto;
+  background: rgba(31, 31, 31, 0.35);
+  padding: 30px;
+  border-radius: 15px;
+}
+
+#trending-main-wrapper {
   color: aliceblue;
   position: relative;
   top: 5vh;
@@ -245,4 +263,9 @@ input[type="radio"] {
 .dark-button {
   background-color: #3b3b3b !important;
   border-color: white !important;
+}
+
+.page-button {
+  color: aliceblue !important;
+  background-color: #3b3b3bd3 !important;
 }

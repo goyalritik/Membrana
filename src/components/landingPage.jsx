@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class landingPage extends React.Component {
   render() {
@@ -13,7 +14,9 @@ class landingPage extends React.Component {
             A one store away from the world of movies where you rate, review &
             watch!
           </div>
-          <button id="start-watching">Start watching</button>
+          <Link to="/movies">
+            <button id="start-watching">Start watching</button>
+          </Link>
         </div>
       </div>
     );

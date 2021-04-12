@@ -20,15 +20,21 @@ class Movies extends Component {
     sortColumn: { path: "title", order: "asc" },
     searchQuery: "",
     selectedGenre: null,
+    isMovieInDatabase: false,
   };
   async componentDidMount() {
     const { data } = await getGenres();
     const genres = [{ _id: "", name: "All Genres" }, ...data];
 
     const { data: movies } = await getMovies();
+    var bool = false;
+    if (movies.length) {
+      bool = true;
+    }
     this.setState({
       movies: movies,
       genres,
+      isMovieInDatabase: bool,
     });
   }
 
@@ -76,7 +82,7 @@ class Movies extends Component {
     const { selectedGenre, movies, sortColumn, searchQuery } = this.state;
     const { user } = this.props;
 
-    if (this.state.movies.length === 0) {
+    if (this.state.movies.length === 0 && this.state.isMovieInDatabase) {
       return (
         <div>
           <p>There are no movies in the database.</p>
