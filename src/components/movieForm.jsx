@@ -6,7 +6,11 @@ import { saveMovie, getMovie } from "./../services/movieService";
 
 class MovieForm extends Form {
   state = {
-    data: { title: "", genreId: "",/* numberInStock: "", rating: "",*/ link:"" },
+    data: {
+      title: "",
+      genreId: "",
+      /* numberInStock: "", rating: "",*/ link: "",
+    },
     genres: [],
     errors: {},
   };
@@ -49,8 +53,6 @@ class MovieForm extends Form {
       _id: movie._id,
       title: movie.title,
       genreId: movie.genre._id,
-      // numberInStock: movie.numberInStock,
-      // rating: movie.rating,
       link: movie.link,
     };
   };
@@ -62,13 +64,11 @@ class MovieForm extends Form {
 
   render() {
     return (
-      <div>
+      <div id="movie-form-wrapper">
         <h1>Movie Form </h1>
         <form onSubmit={this.handleSubmit}>
           {this.renderInput("title", "Title")}
           {this.renderSelect("genreId", "Genre", this.state.genres)}
-          {/* {this.renderInput("numberInStock", "NumberInStock", "number")}
-          {this.renderInput("rating", "Rating", "number")} */}
           {this.renderInput("link", "Link")}
           {this.renderButton("Save")}
         </form>

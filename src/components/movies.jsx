@@ -124,7 +124,7 @@ class Movies extends Component {
             {user && (
               <Link
                 to="/movies/new"
-                className="btn btn-primary"
+                className="btn btn-primary dark-button"
                 style={{ marginBottom: 20 }}
               >
                 New Movie

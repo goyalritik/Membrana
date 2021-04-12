@@ -13,7 +13,7 @@ class Input extends Component {
           onChange={onChange}
           value={value}
           id={name}
-          className="form-control"
+          className="input form-control"
         />
         {error && <div className="alert alert-danger">{error}</div>}
       </div>

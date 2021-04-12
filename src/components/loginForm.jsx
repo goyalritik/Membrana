@@ -35,7 +35,7 @@ class LoginForm extends Form {
   render() {
     if (currentUser()) return <Redirect to="/" />;
     return (
-      <div>
+      <div id="login-form-wrapper">
         <h1>Login</h1>
         <form onSubmit={this.handleSubmit}>
           {this.renderInput("username", "Username")}

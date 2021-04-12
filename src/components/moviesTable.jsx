@@ -2,50 +2,49 @@ import React, { Component } from "react";
 import Likes from "./common/like";
 import { Link } from "react-router-dom";
 import { currentUser } from "./../services/authService";
-import { getReviews } from './../services/userService';
-
+import { getReviews } from "./../services/userService";
 
 class MoviesTable extends Component {
   state = {
-    reviews:[],
-    user:"",
+    reviews: [],
+    user: "",
   };
 
-  async componentDidMount(){
+  async componentDidMount() {
     const { data: reviews } = await getReviews();
-    
+
     this.setState({ reviews });
     const user = currentUser();
-    
+
     this.setState({ user });
-    
   }
 
-  numberOfReviews=(id)=>{
-    var count=0;
-    for(var review of this.state.reviews){
-      if(review.movieId === id ){
-        count=count+1;
+  numberOfReviews = (id) => {
+    var count = 0;
+    for (var review of this.state.reviews) {
+      if (review.movieId === id) {
+        count = count + 1;
       }
     }
-    return (count);
-  }
-  totalRating=(id)=>{
-    var n=0,rating=0;
-    
-    for(var review of this.state.reviews){
-      if(review.movieId === id){
-        n=n+1;
-        rating=rating + review.rating;
+    return count;
+  };
+  totalRating = (id) => {
+    var n = 0,
+      rating = 0;
+
+    for (var review of this.state.reviews) {
+      if (review.movieId === id) {
+        n = n + 1;
+        rating = rating + review.rating;
       }
     }
-    var rate=rating/n;
-    var rounded=Math.round(rate * 10) / 10;
-    if(isNaN(rate)){
-      return (0);
+    var rate = rating / n;
+    var rounded = Math.round(rate * 10) / 10;
+    if (isNaN(rate)) {
+      return 0;
     }
-    return (rounded);
-  }
+    return rounded;
+  };
 
   raisedSort = (path) => {
     const sortColumn = { ...this.props.sortColumn };
@@ -57,7 +56,6 @@ class MoviesTable extends Component {
     }
     this.props.onSort(sortColumn);
   };
-  
 
   renderSortIcon = (path) => {
     if (path !== this.props.sortColumn.path) return null;
@@ -98,22 +96,25 @@ class MoviesTable extends Component {
             <th className="clickable" onClick={() => this.raisedSort("link")}>
               Link {this.renderSortIcon("link")}
             </th>
-
-            <th></th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
           {pageMovies.map((movie) => (
             <tr key={movie._id}>
               <td>
-                <Link to={`/movies/${movie._id}`}>{movie.title}</Link>
+                <Link id="movie-title" to={`/movies/${movie._id}`}>
+                  {movie.title}
+                </Link>
               </td>
               <td>{movie.genre.name}</td>
               <td>{this.numberOfReviews(movie._id)}</td>
               <td>{this.totalRating(movie._id)}</td>
-              <td><a href={movie.link}>Click Here</a></td>
-              
+              <td>
+                <a id="watch-link" href={movie.link}>
+                  Watch it now
+                </a>
+              </td>
+
               <td>
                 <Likes onClick={() => onLike(movie)} liked={movie.liked} />
               </td>
